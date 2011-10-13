@@ -1,0 +1,32 @@
+[[ -s "<%= ENV['HOME'] %>/.rvm/scripts/rvm" ]] && source "<%= ENV['HOME'] %>/.rvm/scripts/rvm"
+
+export PATH=$PATH:/usr/local/sbin
+
+alias ll='ls -l'
+
+# List all files colorized in long format, including dot files
+alias la='ls -Gla'
+
+# List only directories
+alias lsd='ls -l | grep "^d"'
+
+# File size
+alias fs="stat -f \"%z bytes\""
+
+#navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ~='cd ~'
+
+#apps
+alias g='git'
+alias m='mate'
+alias v='vim'
+
+# Show/hide hidden files in Finder
+alias showhidden="defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder"
+alias hidehidden="defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder"
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
