@@ -1,6 +1,20 @@
 [[ -s "<%= ENV['HOME'] %>/.rvm/scripts/rvm" ]] && source "<%= ENV['HOME'] %>/.rvm/scripts/rvm"
 
-export PATH=$PATH:/usr/local/sbin
+function add_to_path {
+  echo $PATH | grep -q -s $1
+  if [ $? -eq 1 ] ; then
+      PATH=$PATH:$1
+      export PATH
+  fi
+}
+
+add_to_path /usr/local/bin
+add_to_path /usr/local/sbin
+
+export GNUTERM=x11
+export CLICOLOR=1
+export ARCHFLAGS="-arch x86_64"
+export EDITOR=mate
 
 alias ll='ls -l'
 
@@ -22,6 +36,7 @@ alias ~='cd ~'
 alias g='git'
 alias m='mate'
 alias v='vim'
+alias r='rails'
 
 # Show/hide hidden files in Finder
 alias showhidden="defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder"
