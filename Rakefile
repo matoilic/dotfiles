@@ -14,8 +14,8 @@ def install_file(file)
       dest_file.write(ERB.new(File.read(file)).result(binding))
     end
   else
-    puts "copying ~~/#{real}"
-    system %Q{cp "$PWD/#{file}" "$HOME/#{real}"}
+    puts "linking ~/#{real}"
+    system %Q{ln -s "$PWD/#{file}" "$HOME/#{real}"}
   end
 end
 
