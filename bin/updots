@@ -1,0 +1,14 @@
+#!/bin/bash
+
+function update_dot_files {
+    cd $HOME/.dotfiles
+
+    local status=$(git pull)
+    if [[ $status != 'Already up-to-date.' ]]; then
+        rake install
+    else
+        echo $status
+    fi
+}
+
+update_dot_files

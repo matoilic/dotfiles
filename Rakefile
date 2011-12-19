@@ -59,4 +59,6 @@ task :install do
       install_file(file)
     end
   end
+  
+  system %Q{ln -sf "$PWD" "$HOME/.dotfiles"}
 end
