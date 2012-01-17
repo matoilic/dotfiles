@@ -10,6 +10,7 @@ function add_to_path {
 
 add_to_path /usr/local/bin
 add_to_path /usr/local/sbin
+add_to_path /usr/local/pear/bin
 add_to_path ~/.bin
 
 export GNUTERM=x11
@@ -49,3 +50,7 @@ alias hidehidden="defaults write com.apple.Finder AppleShowAllFiles -bool false 
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+# simulate smal bandwith
+alias limitbw="sudo ipfw pipe 1 config bw 10kbit/s plr 0.5 delay 1000ms && sudo ipfw add pipe 1 dst-port http"
+alias resetbw="sudo ipfw flush"
