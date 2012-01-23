@@ -1,6 +1,6 @@
 [user]
-	name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
-	email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
+	name = <%= PARAMS.get('name', 'Your name') %>
+	email = <%= PARAMS.get('email', 'Your Email') %>
 [core]
 	excludesfile = <%= ENV['HOME'] %>/.gitignore
 	editor = vim
@@ -12,7 +12,7 @@
 	c = commit
 	p = push
 	pt = push --tags
-	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%%an>%Creset' --abbrev-commit --date=relative
 	ca = commit --amend
 	up = !sh -c 'git pull && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
 	s = status
@@ -21,3 +21,5 @@
     co = checkout
 [color]
 	ui = auto
+[github]
+    user = <%= PARAMS.get('ghuser', 'Your Github username') %>

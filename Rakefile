@@ -1,9 +1,11 @@
 require 'rake'
 require 'erb'
 require 'pathname'
+require './lib/dot_params'
 
 EXCLUDE = %w[Rakefile]
 HOME = Pathname.new(ENV['HOME'])
+PARAMS = DotParams.new
 
 def install_file(file)
   real = real_name(file)
@@ -60,5 +62,7 @@ task :install do
     end
   end
   
-  system %Q{ln -sf "$PWD" "$HOME/.dotfiles"}
+  system %Q{unlink "$HOME/.dotfiles"} if File.symlink?(File.join(ENV['HOME'], '.dotfiles'))
+  system %Q{ln -sf #{File.dirname(__FILE__)} "$HOME/.dotfiles"}
+  PARAMS.save
 end
