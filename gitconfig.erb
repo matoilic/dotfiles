@@ -17,9 +17,10 @@
 	up = !sh -c 'git pull && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
 	s = status
 	pl = pull
-    rh = reset HEAD 
-    co = checkout
+	plm = pull origin master
+  rh = reset HEAD 
+  co = checkout
 [color]
 	ui = auto
 [github]
-    user = <%= PARAMS.get('ghuser', 'Your Github username') %>
+  user = <%= PARAMS.get('ghuser', 'Your Github username') %>
