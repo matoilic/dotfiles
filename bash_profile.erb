@@ -1,6 +1,6 @@
 [[ -s "<%= ENV['HOME'] %>/.rvm/scripts/rvm" ]] && source "<%= ENV['HOME'] %>/.rvm/scripts/rvm"
 
-function add_to_path {
+function append_to_path {
   echo $PATH | grep -q -s $1
   if [ $? -eq 1 ] ; then
       PATH=$PATH:$1
@@ -8,10 +8,18 @@ function add_to_path {
   fi
 }
 
-add_to_path /usr/local/bin
-add_to_path /usr/local/sbin
-add_to_path /usr/local/pear/bin
-add_to_path ~/.bin
+function prepend_to_path {
+  echo $PATH | grep -q -s $1
+  if [ $? -eq 1 ] ; then
+      PATH=$PATH:$1
+      export PATH
+  fi
+}
+
+prepend_to_path /usr/local/bin
+prepend_to_path /usr/local/sbin
+prepend_to_path /usr/local/pear/bin
+prepend_to_path ~/.bin
 
 export GNUTERM=x11
 export CLICOLOR=1
