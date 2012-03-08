@@ -5,7 +5,7 @@ fontSize = 12
 
 # Extra files to include
 #
-myExtraIncludes = ".tm_properties,.htaccess,.gitignore"
+myExtraIncludes = ".tm_properties,.htaccess,.htpasswd,.gitignore"
 fileBrowserGlob  = "{*,$myExtraIncludes}"
 include = "{$include,$myExtraIncludes}"
 
@@ -23,7 +23,7 @@ include = "{$include,$myExtraIncludes}"
 
 # Configure git
 #
-TM_GIT = "/opt/local/bin/git"
+TM_GIT = "/usr/local/bin/git"
 
 # Default editing configuration
 #
