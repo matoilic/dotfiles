@@ -66,3 +66,6 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 # simulate smal bandwith
 alias limitbw="sudo ipfw pipe 1 config bw 10kbit/s plr 0.5 delay 1000ms && sudo ipfw add pipe 1 dst-port http"
 alias resetbw="sudo ipfw flush"
+
+#generate random string
+alias rand="openssl rand -base64"
