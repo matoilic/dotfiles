@@ -18,10 +18,12 @@
 	s = status
 	pl = pull
 	plm = pull origin master
-  rh = reset HEAD 
-  co = checkout
-  mvc = git mv -f
+    rh = reset HEAD 
+    co = checkout
+    mvc = git mv -f
 [color]
 	ui = auto
 [github]
-  user = <%= PARAMS.get('ghuser', 'Your Github username') %>
+    user = <%= PARAMS.get('ghuser', 'Your Github username') %>
+[pull]
+    rebase = true
