@@ -11,7 +11,7 @@ function append_to_path {
 function prepend_to_path {
   echo $PATH | grep -q -s $1
   if [ $? -eq 1 ] ; then
-      PATH=$PATH:$1
+      PATH=$1:$PATH
       export PATH
   fi
 }
@@ -19,6 +19,7 @@ function prepend_to_path {
 prepend_to_path /usr/local/bin
 prepend_to_path /usr/local/sbin
 prepend_to_path /usr/local/pear/bin
+prepend_to_path /usr/local/share/npm/bin
 prepend_to_path ~/.bin
 
 export GNUTERM=x11
