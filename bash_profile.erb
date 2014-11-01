@@ -1,4 +1,5 @@
 [[ -s "<%= ENV['HOME'] %>/.rvm/scripts/rvm" ]] && source "<%= ENV['HOME'] %>/.rvm/scripts/rvm"
+[[ -s "<%= ENV['HOME'] %>/Workspace/Projects/ShellMarks/bashmarks.sh" ]] && source "<%= ENV['HOME'] %>/Workspace/Projects/ShellMarks/bashmarks.sh"
 
 function append_to_path {
   echo $PATH | grep -q -s $1
@@ -16,6 +17,7 @@ function prepend_to_path {
   fi
 }
 
+prepend_to_path $HOME/.rvm/bin
 prepend_to_path /usr/local/bin
 prepend_to_path /usr/local/sbin
 prepend_to_path /usr/local/pear/bin
