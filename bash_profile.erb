@@ -1,6 +1,8 @@
 [[ -s "<%= ENV['HOME'] %>/.rvm/scripts/rvm" ]] && source "<%= ENV['HOME'] %>/.rvm/scripts/rvm"
 [[ -s "<%= ENV['HOME'] %>/Workspace/Projects/ShellMarks/bashmarks.sh" ]] && source "<%= ENV['HOME'] %>/Workspace/Projects/ShellMarks/bashmarks.sh"
 
+source "<%= ENV['HOME'] %>/.profile"
+
 function append_to_path {
   echo $PATH | grep -q -s $1
   if [ $? -eq 1 ] ; then
