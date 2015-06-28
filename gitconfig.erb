@@ -1,37 +1,39 @@
 [user]
-	name = <%= PARAMS.get('name', 'Your name') %>
-	email = <%= PARAMS.get('email', 'Your Email') %>
+    name = <%= PARAMS.get('name', 'Your name') %>
+    email = <%= PARAMS.get('email', 'Your Email') %>
 [core]
-	excludesfile = <%= ENV['HOME'] %>/.gitignore
-	editor = vim
+    excludesfile = <%= ENV['HOME'] %>/.gitignore
+    editor = vim
 [alias]
-	a = add
-	aa = add -A
-	alias = "!sh -c '[ $# = 2 ] && git config --global alias.\"$1\" \"$2\" && exit 0 || [ $# = 1 ] && [ $1 = \"--list\" ] && git config --list | grep \"alias\\.\" | sed \"s/^alias\\.\\([^=]*\\)=\\(.*\\).*/\\1@@@@=>@@@@\\2/\" | sort | column -ts \"@@@@\" && exit 0 || echo \"usage: git alias <new alias> <original command>\\n       git alias --list\" >&2 && exit 1' -"
-	ac = !git add -A && git commit
-	c = commit
-	p = push
-	pt = push --tags
-	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%%an>%Creset' --abbrev-commit --date=relative
-	ca = commit --amend
-	up = !sh -c 'git pull && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
-	s = status
-	pl = pull
-	plm = pull origin master
+    a = add
+    aa = add -A
+    alias = "!sh -c '[ $# = 2 ] && git config --global alias.\"$1\" \"$2\" && exit 0 || [ $# = 1 ] && [ $1 = \"--list\" ] && git config --list | grep \"alias\\.\" | sed \"s/^alias\\.\\([^=]*\\)=\\(.*\\).*/\\1@@@@=>@@@@\\2/\" | sort | column -ts \"@@@@\" && exit 0 || echo \"usage: git alias <new alias> <original command>\\n       git alias --list\" >&2 && exit 1' -"
+    ac = !git add -A && git commit
+    c = commit
+    p = push
+    pt = push --tags
+    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%%an>%Creset' --abbrev-commit --date=relative
+    ca = commit --amend
+    up = !sh -c 'git pull && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
+    s = status
+    pl = pull
+    plm = pull origin master
     rh = reset HEAD 
     co = checkout
-    mvc = git mv -f
+    mvc = mv -f
+    sc = svn dcommit
+    su = svn rebase
 [color]
-	ui = auto
+    ui = auto
 [github]
     user = <%= PARAMS.get('ghuser', 'Your Github username') %>
 [pull]
     rebase = false
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
 [push]
-	default = matching    
+    default = matching    
