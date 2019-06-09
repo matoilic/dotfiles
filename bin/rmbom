@@ -1,5 +1,0 @@
-#!/bin/bash
-
-#remove bom from a UTF-8 file
-sed 's/^\xEF\xBB\xBF//' $1 > ___$1.___
-mv ___$1.___ $1

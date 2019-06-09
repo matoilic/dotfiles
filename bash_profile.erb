@@ -1,36 +1,16 @@
 [[ -s "<%= ENV['HOME'] %>/.rvm/scripts/rvm" ]] && source "<%= ENV['HOME'] %>/.rvm/scripts/rvm"
-[[ -s "<%= ENV['HOME'] %>/Workspace/Projects/ShellMarks/bashmarks.sh" ]] && source "<%= ENV['HOME'] %>/Workspace/Projects/ShellMarks/bashmarks.sh"
 
 source "<%= ENV['HOME'] %>/.profile"
 
-function append_to_path {
-  echo $PATH | grep -q -s $1
-  if [ $? -eq 1 ] ; then
-      PATH=$PATH:$1
-      export PATH
-  fi
-}
-
-function prepend_to_path {
-  echo $PATH | grep -q -s $1
-  if [ $? -eq 1 ] ; then
-      PATH=$1:$PATH
-      export PATH
-  fi
-}
-
-prepend_to_path $HOME/.rvm/bin
-prepend_to_path /usr/local/bin
-prepend_to_path /usr/local/sbin
-prepend_to_path /usr/local/pear/bin
-prepend_to_path /usr/local/share/npm/bin
-prepend_to_path ~/.composer/vendor/bin
-prepend_to_path ~/.bin
-
-export GNUTERM=x11
 export CLICOLOR=1
 export ARCHFLAGS="-arch x86_64"
-export EDITOR=mate
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mate -w'
+fi
 
 alias ll='ls -l'
 

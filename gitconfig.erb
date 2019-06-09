@@ -2,8 +2,8 @@
     name = <%= PARAMS.get('name', 'Your name') %>
     email = <%= PARAMS.get('email', 'Your Email') %>
 [core]
-    excludesfile = <%= ENV['HOME'] %>/.gitignore
-    editor = vim
+	excludesfile = <%= ENV['HOME'] %>/.gitignore
+	editor = mate -w
 [alias]
     a = add
     aa = add -A
@@ -12,7 +12,7 @@
     c = commit
     p = push
     pt = push --tags
-    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%%an>%Creset' --abbrev-commit --date=relative
+    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     ca = commit --amend
     up = !sh -c 'git pull && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
     s = status
@@ -21,19 +21,20 @@
     rh = reset HEAD 
     co = checkout
     mvc = mv -f
-    sc = svn dcommit
-    su = svn rebase
+    current = rev-parse --abbrev-ref HEAD
+    su = "! git branch --set-upstream-to=origin/$(git current) $(git current)"
 [color]
     ui = auto
 [github]
-    user = <%= PARAMS.get('ghuser', 'Your Github username') %>
+    user = matoilic
 [pull]
-    rebase = false
+    default = current
+    rebase = true
 [difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path = 
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
 [mergetool "sourcetree"]
-    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 [push]
-    default = matching    
+    default = current
